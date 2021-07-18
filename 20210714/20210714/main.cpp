@@ -234,16 +234,16 @@ int main()
 		trump[i + 13].num = i + 1;
 		trump[i + 26].num = i + 1;
 		trump[i + 39].num = i + 1;
-		trump[i + 40].num = 'J';
+		trump[i + 40].num = 0;
 	}
 
 	// 乱数SEED設定
 	srand((int)time(NULL));
 
-	// トランプを100回切る(適当)
+	// トランプを100回切る
 	for (i = 0; i < 100; i++) {
-		a = rand() % 52;
-		b = rand() % 52;
+		a = rand() % 53;
+		b = rand() % 53;
 		memcpy(&c, &trump[a], sizeof(c));
 		memcpy(&trump[a], &trump[b], sizeof(c));
 		memcpy(&trump[b], &c, sizeof(c));

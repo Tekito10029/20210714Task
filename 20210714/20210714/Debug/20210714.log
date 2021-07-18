@@ -1,3 +1,2 @@
 ﻿  main.cpp
-MSVCRTD.lib(exe_main.obj) : error LNK2019: 未解決の外部シンボル _main が関数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) で参照されました
-C:\Users\adminuser\Documents\GitHub\20210714Task\20210714\Debug\20210714.exe : fatal error LNK1120: 1 件の未解決の外部参照
+  20210714.vcxproj -> C:\Users\adminuser\Documents\GitHub\20210714Task\20210714\Debug\20210714.exe
