@@ -1,3 +1,3 @@
 ﻿  main.cpp
-E:\Visual Studio\20210714\20210714\main.cpp(267,2): warning C4244: '引数': 'time_t' から 'unsigned int' への変換です。データが失われる可能性があります。
-  20210714.vcxproj -> E:\Visual Studio\20210714\Debug\20210714.exe
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 未解決の外部シンボル _main が関数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) で参照されました
+C:\Users\adminuser\Documents\GitHub\20210714Task\20210714\Debug\20210714.exe : fatal error LNK1120: 1 件の未解決の外部参照

@@ -1,16 +1,8 @@
-#include<iostream>
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
-
-/*
-int MidPosition(double x1, double y1, double x2, double y2);
-void Coordinate();
-*/
-
-/*
-int main()
-{
-*/
 	/*第１問
 	以下の2進数の計算に答えよ。
 	1011 + 0101
@@ -129,161 +121,139 @@ int main()
 
 	/*第１０問
 	２点間の距離を求める関数を作成してください。*/
-	
-	/*
-	Coordinate();
-	*/
 
-	/*第１１問
-	カード構造体を作成してください。
-	このカードはトランプのカードのことです。
-	情報として、なんのカードなのかを持っていてください。
-	スペードの7である、ハートの13であるなど。
-	この構造体には現在の自分の情報を設定する処理と、
-	現在の自分の情報を開示する処理を作ってください。
-
-
-	トランプの山札の構造体を作成してください。
-	その際カードには先ほど作った構造体を使用してください。
-	以下の条件を満たしておくこと。
-	トランプの枚数は53枚(1 ～ 13 * 4 + ジョーカー1)
-	Card card[53];
-
-	シャッフル機能を実装する。
-	card[53]にランダムにカード情報を付与してください。
-	card[0]がクラブの6、card[1]がハートの5といったように。
-	その際同じカードは存在しないようにしてください。*/
 /*
-}
-*/
-/*
-void Coordinate()
+int Coordinate(int Position1, int Position2)
 {
-	double x1 = 4;
-	double y1 = 4;
-	double x2 = 2;
-	double y2 = 2;
-	
-	int Mid = 0;
-	int Position;
-
-	Position = MidPosition(x1, y1, x2, y2);
-
-	std::cout << Position << "\n";
+	return Position1 - Position2;
+}
+int main()
+{
+	printf("距離の差は%dです\n", Coordinate(5, 3));
 }
 */
 
+	/////////////////////////////////////////////////////////////////
+	//第１１問
+	//カード構造体を作成してください。
+	//このカードはトランプのカードのことです。
+	//情報として、なんのカードなのかを持っていてください。
+	//スペードの7である、ハートの13であるなど。
+	//この構造体には現在の自分の情報を設定する処理と、
+	//現在の自分の情報を開示する処理を作ってください。
+	////////////////////////////////////////////////////////////////
 
+/*
+struct card
+{
+public:
+	int GetCard_num() { return card_num; }
+	int GetCard_pattern() { return card_pattern; }
+	void SetCardNum(int set_num);
+	void SetCardPattern(int set_pattern);
+private:
+	int card_pattern;
+	int card_num;
+};
+int main()
+{
+	card cards;
+	int cardnum, cardpattern;
+	printf("トランプのスートを入力してください。\ns = スペード\nh = ハート\nc = クラブ\nd = ダイヤ\n");
+	scanf_s("%c", &cardpattern);
+	printf("トランプの数字を入力してください(1～13)\n");
+	scanf_s("%d", &cardnum);
+	cards.SetCardPattern(cardpattern);
+	cards.SetCardNum(cardnum);
+	printf_s("トランプは %c の %d です", cards.GetCard_pattern(), cards.GetCard_num());
+}
+void card::SetCardNum(int set_num)
+{
+	card_num = set_num;
+}
+void card::SetCardPattern(int set_pattern)
+{
+	card_pattern = set_pattern;
+}
+*/
 
-#pragma region 
+	//////////////////////////////////////////////////////
+	//トランプの山札の構造体を作成してください。
+	//その際カードには先ほど作った構造体を使用してください。
+	//以下の条件を満たしておくこと。
+	//トランプの枚数は53枚(1 ～ 13 * 4 + ジョーカー1)
+	//Card card[53];
+	//////////////////////////////////////////////////////
 
-///* Borland-C++互換の乱数関数のため */
-//#define randomize() srand(time(NULL))
-//#define random(X)   ((int)(((double)rand() / (double)RAND_MAX) * (X)))
-//
-//
-///* スーツの番号 */
-//#define SPADE   4
-//#define HEART   3
-//#define DIAMOND 2
-//#define CLUB    1
-//
-///* 絵札の番号 */
-//#define JACK    11
-//#define QUEEN   12
-//#define KING    13
-//#define ACE     14
-//
-///* カードの表示方法
-// SA  スペードのエース suit=SPADE,  rank=14 (ACEはKINGの1つ上として扱う)
-// H2  ハートの2        suit=HEART,  rank=2
-// D3  ダイヤの3        suit=DIAMOND,rank=3
-// C10 クラブの10       suit=CLUB,   rank=10
-//*/
-//
-///* カードを保存 */
-//int card[52][2];
-//
-///* 表示用 */
-//char str_rank[13][3] = {
-//	"2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "10" ,
-//	"J" , "Q" , "K" , "A" ,
-//};
-//char str_suit[4][3] = { "C" , "D" , "H" , "S" };
-//
-//void card_initialize() {
-//	int suit, rank, i = 0;
-//	/* カードを作る */
-//	for (suit = CLUB; suit <= SPADE; suit++)
-//	{
-//		for (rank = 2; rank <= ACE; rank++)
-//		{
-//			card[i][0] = suit;
-//			card[i][1] = rank;
-//			i++;
-//		}
-//	}
-//	/* カードをシャッフルする */
-//	for (i = 0; i < 52; i++)/* i番目をデタラメ番目と入れ換え */
-//	{
-//		int r = random(52);
-//		int tsuit = card[r][0];
-//		int trank = card[r][1];
-//		card[r][0] = card[i][0];
-//		card[r][1] = card[i][1];
-//		card[i][0] = tsuit;
-//		card[i][1] = trank;
-//	}
-//}
-//
-///* カードを表示する */
-//void card_print(int suit, int rank)
-//{
-//	printf("%s%s", str_suit[suit - 1], str_rank[rank - 2]);
-//}
-//
-///* 文字列で入力したカードのデータから suit と rank を求める */
-//void card_str(int* suit, int* rank, char str[]) {
-//	switch (str[0])
-//	{
-//	case 'S': case 's': *suit = SPADE; break;
-//	case 'H': case 'h': *suit = HEART; break;
-//	case 'D': case 'd': *suit = DIAMOND; break;
-//	case 'C': case 'c': *suit = CLUB; break;
-//	}
-//	switch (str[1])
-//	{
-//	case 'A': case 'a': *rank = ACE; break;
-//	case 'K': case 'k': *rank = KING; break;
-//	case 'Q': case 'q': *rank = QUEEN; break;
-//	case 'J': case 'j': *rank = JACK; break;
-//	default: *rank = atoi(str + 1); break;
-//	}
-//}
-//
-//int main()
-//{
-//	int i;
-//	char str[10];
-//
-//	/* でたらめに切った52枚から5枚を表示 */
-//	randomize();
-//	card_initialize();
-//	for (i = 0; i < 5; i++)
-//	{
-//		card_print(card[i][0], card[i][1]);
-//		printf("\n");
-//	}
-//
-//	/* 入力した文字から、5枚を表示 */
-//	for (i = 0; i < 5; i++)
-//	{
-//		int suit, rank;
-//		//scanf("%s", str);
-//		card_str(&suit, &rank, str);
-//		card_print(suit, rank);
-//		printf("\n");
-//	}
-//	return 0;
-//}
-#pragma endregion
+/*
+struct Cards
+{
+public:
+	int GetCard_num() { return card_num; }
+	int GetCard_pattern() { return card_pattern; }
+	void SetCardNum(int set_num);
+	void SetCardPattern(int set_pattern);
+private:
+	int card_pattern;
+	int card_num;
+	int card_card[53];
+};
+*/
+
+	//////////////////////////////////////////////////////
+	//シャッフル機能を実装する。
+	//card[53]にランダムにカード情報を付与してください。
+	//card[0]がクラブの6、card[1]がハートの5といったように。
+	//その際同じカードは存在しないようにしてください。
+	//////////////////////////////////////////////////////
+
+/*
+struct card
+{
+	char mark;
+	int num;
+};
+
+int main()
+{
+	struct card trump[53];
+	int i;
+	int a;
+	int b;
+	struct card c;
+
+	// 配列（トランプ）初期化
+	for (i = 0; i < 13; i++) {
+		trump[i + 0].mark = 's';
+		trump[i + 13].mark = 'd';
+		trump[i + 26].mark = 'h';
+		trump[i + 39].mark = 'c';
+		trump[i + 40].mark = 'j';
+
+		trump[i + 0].num = i + 1;
+		trump[i + 13].num = i + 1;
+		trump[i + 26].num = i + 1;
+		trump[i + 39].num = i + 1;
+		trump[i + 40].num = 'J';
+	}
+
+	// 乱数SEED設定
+	srand((int)time(NULL));
+
+	// トランプを100回切る(適当)
+	for (i = 0; i < 100; i++) {
+		a = rand() % 52;
+		b = rand() % 52;
+		memcpy(&c, &trump[a], sizeof(c));
+		memcpy(&trump[a], &trump[b], sizeof(c));
+		memcpy(&trump[b], &c, sizeof(c));
+	}
+
+	// 最初の５枚表示 
+	for (i = 0; i < 5; i++) {
+		printf("%c-%d ", trump[i].mark, trump[i].num);
+	}
+
+	return 0;
+}
+*/
